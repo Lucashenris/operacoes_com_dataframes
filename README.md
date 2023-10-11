@@ -111,7 +111,8 @@ df.info()
     memory usage: 180.7+ KB
 
 
-
+    /tmp/ipykernel_16277/2572900213.py:13: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will *not* be treated as literal strings when regex=True.
+      df['item_price'] = df['item_price'].str.replace('$', '').astype(float)
 
 
     5. Manipulação de string no dataframe
@@ -406,3 +407,16 @@ df
 </div>
 
 
+
+7. Abrindo vários arquivos .csv de um diretório como um único dataframe
+
+
+```python
+# vamos utilizar a biblioteca glob para listar os arquivos .csv
+import glob
+
+arquivos = glob.glob('diretorio/*.csv')
+
+#abrir todos os arquivos .csv em um só dataframe
+df = pd.concat([pd.read_csv(arquivo) for arquivo in arquivos])
+```
